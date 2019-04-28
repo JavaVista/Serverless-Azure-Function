@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+		<title>
+			Play and test your first Serverless Azure Function <!-- omit in toc
+			-->
+		</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+			integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<style>
+			.task-list-item {
+				list-style-type: none;
+			}
+			.task-list-item-checkbox {
+				margin-left: -20px;
+				vertical-align: middle;
+			}
+		</style>
+		<style>
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC',
+					'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+				font-size: 14px;
+				line-height: 1.6;
+			}
+		</style>
+
+		<script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+	</head>
+	<body>
+		<h1
+			id="play-and-test-your-first-serverless-azure-function----omit-in-toc"
+		>
+			Play and test your first Serverless Azure Function
+			<!-- omit in toc -->
+		</h1>
+		<ul>
+			<li><a href="#scenario">Scenario</a></li>
+			<li>
+				<a href="#what-is-serverless-computing"
+					>What is serverless computing</a
+				>
+				<ul>
+					<li>
+						<a
+							href="#here-are-some-benefits-of-serverless-computing"
+							>Here are some benefits of serverless computing</a
+						>
+					</li>
+					<li>
+						<a href="#what-are-azure-functions"
+							>What are Azure Functions</a
+						>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#ready-to-play">Ready to play</a>
+				<ul>
+					<li>
+						<a href="#let-us-create-a-function-app"
+							>Let us create a function app</a
+						>
+						<ul>
+							<li><a href="#triggers">Triggers</a></li>
+							<li><a href="#bindings">Bindings</a></li>
+							<li>
+								<a href="#there-are-two-kinds-of-binding"
+									>There are two kinds of binding</a
+								>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#verify-your-function-app-was-created"
+							>Verify your function app was created</a
+						>
+					</li>
+					<li>
+						<a href="#test-your-template-function"
+							>Test your template function</a
+						>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#requirements-for-your-function"
+					>Requirements for your function</a
+				>
+				<ul>
+					<li>
+						<a href="#add-your-code-to-the-function"
+							>Add your code to the function</a
+						>
+					</li>
+					<li>
+						<a href="#let-us-test-our-own-logic"
+							>Let us test our own logic</a
+						>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#summary">Summary</a></li>
+		</ul>
+		<h2 id="scenario">Scenario</h2>
+		<p>
+			Here is a scenario; you oversee an Oven Temperature Data Logger for
+			a Pizzeria company. You monitor this data to help determine when
+			oven maintenance is required.
+		</p>
+		<p>
+			Your company receives sensor data from several pizzeria factories
+			and from different oven models. You are tasked to develop a reusable
+			service that can process your temperature data from all these
+			factories.
+		</p>
+		<p>
+			You decided the best and most cost-effective way to handle this task
+			is to use serverless computing. For this project, you are going to
+			use Azure Functions. With this in mind, we are going to play with
+			Azure Functions to learn how it works immediately.
+		</p>
+		<h2 id="what-is-serverless-computing">What is serverless computing</h2>
+		<p>
+			With serverless computing, your cloud provider manages the
+			provisioning and maintenance of the infrastructure letting you focus
+			on building the app logic. It enables you to run pieces of code or
+			functions, written in the programming language of your choice, in
+			the cloud. In other words, Function as a service (FaaS), or a
+			microservice that is hosted on a cloud. Your function app is
+			automatically scaled out or down depending on load.
+		</p>
+		<h3 id="here-are-some-benefits-of-serverless-computing">
+			Here are some benefits of serverless computing
+		</h3>
+		<ul>
+			<li>
+				Write your own business logic in the language code of your
+				choice
+			</li>
+			<li>You do not need to manage any servers hardware or resources</li>
+			<li>
+				You are charged based on what is used and not on reserved time
+			</li>
+			<li>
+				You can avoid over-allocation of your infrastructure - by
+				scaling up or down automatically
+			</li>
+			<li>
+				It provides stateless logic - function instances are created and
+				destroyed on demand
+			</li>
+			<li>
+				Functions are event-driven - they run only in response to a
+				trigger or in other words to an event
+			</li>
+			<li>
+				The function app can be moved to a traditional compute
+				environment - should the needs of your app change, you can move
+				and deploy it in a non-serverless environment
+			</li>
+		</ul>
+		<h3 id="what-are-azure-functions">What are Azure Functions</h3>
+		<p>
+			Azure Functions is a serverless application platform provided by
+			Microsoft. This allows developers to host business logic with the
+			benefits of serverless computing. Azure Functions provides the
+			scalability that it is needed and will charge only for the resources
+			used. You can write your function app code in the language of your
+			choice, like C#, F#, or JavaScript. It supports NuGet and NPM so you
+			can use your favorite library in your business logic.
+		</p>
+		<h2 id="ready-to-play">Ready to play</h2>
+		<p>
+			Note: Make sure you have an Azure account. If not click
+			<a
+				href="https://azure.microsoft.com/en-us/free/search/?&amp;OCID=AID719825_SEM_OaY3wowC&amp;lnkd=Google_Azure_Brand&amp;gclid=Cj0KCQjw2IrmBRCJARIsAJZDdxD4pB0RVipvBYT29z6cNUPJBKXXeaG7mu2_CT21WaZ1-O1V2S9kz14aAoEFEALw_wcB"
+				>here</a
+			>
+			to create a free one.
+		</p>
+		<h3 id="let-us-create-a-function-app">Let us create a function app</h3>
+		<ol>
+			<li>Sign into the <strong>Azure portal</strong>.</li>
+			<li>
+				Select the <strong>Create a resource</strong> button found on
+				the upper left-hand corner of the portal.
+			</li>
+			<li>
+				Select the <strong>Get started</strong> button and click the
+				<strong>Function App</strong> link.
+				<img
+					src="file:///img/FunctionApp.png"
+					alt="Function App Dialog"
+				/>
+			</li>
+
+			<li>
+				Enter a unique <strong>App name</strong>; this will also serve
+				as the service base URL. i.e., you can name it
+				<em>pizza-functions-xxxxxxx</em>, where the <em>x</em>'s can be
+				replaced with your initials and your birth year.
+			</li>
+			<li>
+				Select a <strong>Subscription</strong> that you would like the
+				app to be hosted.
+			</li>
+			<li>
+				Under <strong>Resource Group</strong>, select
+				<strong>Create new</strong> the name will match the
+				<strong>App name</strong>. Leave the name as it is.
+			</li>
+			<li>For the <strong>OS</strong>, select <em>Windows</em>.</li>
+			<li>
+				For the <strong>Hosting Plan</strong>, select the
+				<em>Consumption Plan</em> to provide the serverless computing
+				benefits.
+			</li>
+			<li>
+				Under <strong>Location</strong>, select the geographical
+				location closest to you.
+			</li>
+			<li>
+				For the <strong>Runtime Stack</strong>, we are going to select
+				<em>JavaScript</em> from the dropdown.
+			</li>
+			<li>
+				Under <strong>Storage</strong> select the
+				<strong>Create new</strong> and use the one that was
+				automatically created.
+			</li>
+			<li>
+				Leave the <strong>Application Insights</strong> name as it is.
+			</li>
+			<li>
+				Click the <strong>Create</strong> button. The deployment will
+				take a few minutes and you will receive a notification when
+				complete.
+				<img src="file:///img/Notification.png" alt="Notification" />
+			</li>
+		</ol>
+		<p>
+			Now, that you have created your very own function app let us execute
+			an actual function. First, a few terms and concepts to know.
+		</p>
+		<h4 id="triggers">Triggers</h4>
+		<p>
+			These are event objects that define how a function is invoked. You
+			must configure a function with one event trigger. Functions are
+			event-driven and it requires a trigger to run.
+		</p>
+		<h4 id="bindings">Bindings</h4>
+		<p>
+			These are the connection to data within your function. You do not
+			have to write code in your function to connect to your data sources
+			and to manage the connections because it takes care of the
+			complexity for you. Each function can have none or more bindings to
+			manage the input and output of data.
+		</p>
+		<h4 id="there-are-two-kinds-of-binding">
+			There are two kinds of binding
+		</h4>
+		<ul>
+			<li>
+				<strong>Input binding</strong> - A connection to a data source.
+				Your function can read data from these inputs.
+			</li>
+			<li>
+				<strong>Output binding</strong> - A connection to a data
+				destination. Your function can write data to these destinations.
+			</li>
+		</ul>
+		<p>
+			Azure provides a large list of
+			<a
+				href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings#supported-bindings"
+				>bindings</a
+			>
+			to connect to different storage and messaging services.
+		</p>
+		<h3 id="verify-your-function-app-was-created">
+			Verify your function app was created
+		</h3>
+		<ol>
+			<li>
+				Click the <strong>Resource groups</strong> button on the
+				left-hand menu of the portal.
+			</li>
+			<li>
+				Click the resource group name link that matches the function app
+				name that you previously created.
+			</li>
+			<li>
+				You should see a list like this:
+				<img
+					src="file:///img/FunctionAppNameLink.png"
+					alt="Function App Icon"
+				/>
+				<strong><em>Note</em></strong
+				>: The one with the <strong>lightning bolt</strong> icon is your
+				function app.
+			</li>
+			<li>
+				Click the function app name link.
+				<img src="file:///img/URL.png" alt="Function App URL" />
+				<strong><em>Note</em></strong
+				>: you will notice you have a public URL assigned to it.
+				<img
+					src="file:///img/FunctionAppWebPage.png"
+					alt="Function App Web Pagel"
+				/>
+				If you click on the URL you should get a default web page
+				indicating the function app is running.
+			</li>
+		</ol>
+		<p>
+			Now, we are going to add an actual function with a logic template to
+			the function app.
+		</p>
+		<ol>
+			<li>
+				Click the <strong>+ New function</strong> button on the app
+				dashboard.
+				<img src="file:///img/NewFunction.png" alt="New Function" />
+			</li>
+
+			<li>
+				Select the <strong>In-portal</strong> box and click the
+				<strong>Continue</strong> button at the bottom.
+			</li>
+			<li>
+				Select the <strong>More templates…</strong> box and click
+				<strong>Finish and view templates</strong> button.
+			</li>
+			<li>Select the <strong>HTTP trigger</strong> box from the list.</li>
+			<li>
+				In the <strong>New Function</strong> dialog box enter
+				<em>OvenTemperatureService</em> in the
+				<strong>Name</strong> field and leave the
+				<strong>Authorization level</strong> as <em>Function</em>.
+			</li>
+			<li>
+				Click the <strong>Create</strong> button. After a few seconds,
+				the code editor will open an <code>index.js</code> file with the
+				template code contents.
+			</li>
+		</ol>
+		<h3 id="test-your-template-function">Test your template function</h3>
+		<ol>
+			<li>
+				From the <code>index.js</code> code editor click the
+				<strong>&lt;/&gt; Get function URL</strong> to get the endpoint.
+				<img
+					src="file:///img/GetFunctionURL.png"
+					alt="&lt;/&gt; Get function URL"
+				/>
+			</li>
+
+			<li>
+				From the <strong>Get function URL</strong> dialog copy the
+				<em>URL</em> and close the dialog box.
+				<strong><em>Note</em></strong
+				>: This <em>URL</em> has your <em>Function Key</em>. This allows
+				you to protect access to your HTTP triggered functions by means
+				of the authorization key.
+			</li>
+			<li>
+				Paste the <em>URL</em> in a safe place like
+				<strong>Notepad</strong> for later use.
+			</li>
+			<li>
+				On the left-hand side expand your function app and expand
+				<strong>Functions</strong> and click the
+				<strong>Manage</strong> button.
+			</li>
+			<li>
+				Download and install
+				<a href="https://www.getpostman.com/downloads/"
+					><strong>Postman</strong></a
+				>
+				to test the function app. <strong>Postman</strong> is a tool app
+				for testing web services.
+			</li>
+			<li>Create a new request with <strong>Postman</strong>:</li>
+		</ol>
+		<ul>
+			<li>
+				<p>
+					Use a <strong>POST</strong> request and paste the
+					<em>URL</em> from your
+					<strong>Get function URL</strong> dialog you copied.
+				</p>
+			</li>
+			<li>
+				<p>
+					Under the <strong>Params</strong> tab add the following
+					key-value pair:
+				</p>
+				<ul>
+					<li>
+						For the <strong>Key</strong> enter <code>name</code> and
+						for the <strong>Value</strong> enter
+						<code>Azure Function</code>.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<p>
+					Under the <strong>Headers</strong> tab add the following
+					key-value pair:
+				</p>
+				<ul>
+					<li>
+						for the <strong>Key</strong> enter
+						<code>Content-Type</code> and for the
+						<strong>Value</strong> enter
+						<code>application/json</code>.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<p>
+					Click the <strong>Send</strong> button and
+					<strong>Postman</strong> will get the response back with the
+					text <code>Hello Azure Function</code>.
+				</p>
+				<p>
+					Yay! It works, you are able to communicate with the function
+					app thru HTTP.
+				</p>
+			</li>
+		</ul>
+		<p>
+			Now, let's add our own logic to the function to meet the
+			requirements for the Pizzeria company.
+		</p>
+		<h2 id="requirements-for-your-function">
+			Requirements for your function
+		</h2>
+		<ul>
+			<li>
+				A pizza cooking temperature between 0 to 300 degrees F should be
+				flagged as COLD.
+			</li>
+			<li>
+				A pizza cooking temperature between 400 to 500 degrees F should
+				be flagged as GREAT.
+			</li>
+			<li>
+				A pizza cooking temperature between 600 to 700 degrees F should
+				be flagged as BURNT
+			</li>
+		</ul>
+		<h3 id="add-your-code-to-the-function">
+			Add your code to the function
+		</h3>
+		<ol>
+			<li>
+				<p>Open the <strong>Azure portal</strong>.</p>
+			</li>
+			<li>
+				<p>
+					In the <code>index.js</code> file replace the template code
+					with the following code:
+				</p>
+				<pre><code class="language-javascript"><div> <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">context, req</span>) </span>{
+     context.log(<span class="hljs-string">'OvenTemperature Service triggered'</span>);
+     <span class="hljs-keyword">if</span> (req.body &amp;&amp; req.body.readings) {
+         req.body.readings.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reading</span>) </span>{
+             <span class="hljs-keyword">let</span> dateTime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(reading.timestamp * <span class="hljs-number">1000</span>);
+             dateTime.toLocaleString(<span class="hljs-string">'en-US'</span>);
+             <span class="hljs-keyword">if</span> (reading.temperature &lt;= <span class="hljs-number">300</span>) {
+                 reading.status = <span class="hljs-string">'COLD'</span>;
+             } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (reading.temperature &lt;= <span class="hljs-number">500</span>) {
+                 reading.status = <span class="hljs-string">'GREAT'</span>;
+             } <span class="hljs-keyword">else</span> {
+                 reading.status = <span class="hljs-string">'BURNT'</span>;
+             }
+             context.log(
+                 <span class="hljs-string">`The Pizza Oven Temperature Reading is <span class="hljs-subst">${
+                     reading.status
+                 }</span> at <span class="hljs-subst">${dateTime}</span>
+                 for Oven at <span class="hljs-subst">${reading.factory}</span>`</span>
+             );
+         });
+
+         context.res = {
+             <span class="hljs-comment">// status: 200, /* Defaults to 200 */</span>
+             body: {
+                 <span class="hljs-attr">readings</span>: req.body.readings,
+             },
+         };
+     } <span class="hljs-keyword">else</span> {
+         context.res = {
+             <span class="hljs-attr">status</span>: <span class="hljs-number">400</span>,
+             <span class="hljs-attr">body</span>:
+                 <span class="hljs-string">'Please send an array of temperature readings in the request body'</span>,
+         };
+     }
+     context.done();
+ };
+</div></code></pre>
+			</li>
+			<li>
+				<p>
+					Click the <strong>Save</strong> button at the top of the
+					code editor.
+				</p>
+				<p>
+					This is a simple logic that iterates over the array of
+					readings and checks thru the fields and outputs the status
+					of the oven, the date time and factory name.
+				</p>
+			</li>
+		</ol>
+		<h3 id="let-us-test-our-own-logic">Let us test our own logic</h3>
+		<ol>
+			<li>Open the <strong>Postman</strong> tool app.</li>
+			<li>Create a new request with <strong>Postman</strong>:</li>
+		</ol>
+		<ul>
+			<li>
+				<p>
+					Use a <strong>POST</strong> request and paste the
+					<em>URL</em> from your
+					<strong>Get function URL</strong> dialog you copied before.
+				</p>
+			</li>
+			<li>
+				<p>
+					Under the <strong>Headers</strong> tab add the following
+					key-value pair:
+				</p>
+				<ul>
+					<li>
+						Under the <strong>Key</strong> enter
+						<code>Content-Type</code> and for the
+						<strong>Value</strong> enter
+						<code>application/json</code>.
+					</li>
+				</ul>
+			</li>
+			<li>
+				<p>
+					Click the <strong>Send</strong> button and
+					<strong>Postman</strong> will get the response back with the
+					text
+					<code
+						>Please send an array of temperature readings in the
+						request body</code
+					>. This means we need some data.
+				</p>
+			</li>
+			<li>
+				<p>
+					Now, we are going to add some data. under the
+					<strong>Body</strong> tab select the
+					<strong>raw</strong> radio button and select
+					<em>JSON (application/json)</em> from the dropdown.
+				</p>
+				<ul>
+					<li>
+						Paste the following JSON snippet sample readings request
+						into the request body text box:
+					</li>
+				</ul>
+				<pre><code class="language-javascript"><div>    {
+      <span class="hljs-string">"readings"</span>: [
+          {
+              <span class="hljs-string">"temperatureId"</span>: <span class="hljs-number">1</span>,
+              <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1554391200</span>,
+              <span class="hljs-string">"temperature"</span>: <span class="hljs-number">203</span>
+          },
+          {
+              <span class="hljs-string">"temperatureId"</span>: <span class="hljs-number">3</span>,
+              <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1554391800</span>,
+              <span class="hljs-string">"temperature"</span>: <span class="hljs-number">400</span>{
+                  <span class="hljs-string">"readings"</span>: [
+                      {
+                          <span class="hljs-string">"factory"</span>: <span class="hljs-string">'Waterbury Pizza Pizza Factory'</span>,
+                          <span class="hljs-string">"temperatureId"</span>: <span class="hljs-number">1</span>,
+                          <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1554391200</span>,
+                          <span class="hljs-string">"temperature"</span>: <span class="hljs-number">203</span>
+                      },
+                      {
+                          <span class="hljs-string">"factory"</span>: <span class="hljs-string">'Harford DiGeorgio Factory'</span>,
+                          <span class="hljs-string">"temperatureId"</span>: <span class="hljs-number">3</span>,
+                          <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1554391800</span>,
+                          <span class="hljs-string">"temperature"</span>: <span class="hljs-number">400</span>
+                      },
+                      {
+                          <span class="hljs-string">"factory"</span>: <span class="hljs-string">'New York Migrante Factory'</span>,
+                          <span class="hljs-string">"temperatureId"</span>: <span class="hljs-number">3</span>,
+                          <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1554390800</span>,
+                          <span class="hljs-string">"temperature"</span>: <span class="hljs-number">298</span>
+                      },
+                      {
+                          <span class="hljs-string">"factory"</span>: <span class="hljs-string">'Orlando Raton Pizza Factory'</span>,
+                          <span class="hljs-string">"temperatureId"</span>: <span class="hljs-number">18</span>,
+                          <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1554392100</span>,
+                          <span class="hljs-string">"temperature"</span>: <span class="hljs-number">658</span>
+                      }
+                  ]
+              }
+          },
+          {
+              <span class="hljs-string">"temperatureId"</span>: <span class="hljs-number">18</span>,
+              <span class="hljs-string">"timestamp"</span>: <span class="hljs-number">1554392100</span>,
+              <span class="hljs-string">"temperature"</span>: <span class="hljs-number">658</span>
+          }
+      ]
+  }
+
+</div></code></pre>
+			</li>
+			<li>
+				<p>
+					Click the <strong>Send</strong> button and
+					<strong>Postman</strong> will get the response back of the
+					JSON.
+				</p>
+			</li>
+		</ul>
+		<ol start="3">
+			<li>
+				Go back to the <strong>Azure portal</strong> and the
+				<code>index.js</code> code editor.
+			</li>
+			<li>
+				Open the <strong>Logs</strong> tab in the bottom flyout of the
+				page. The following screenshot shows an example response in the
+				messages in the <strong>Logs</strong> pane.
+				<img src="file:///img/Logs.png" alt="Logs" />
+				You can see that our status field has been correctly added to
+				each of the readings along with the date time and factory name.
+			</li>
+			<li>
+				If you navigate to the Monitor dashboard, you'll see that the
+				request has been logged to
+				<strong>Application Insights</strong>.
+				<img
+					src="file:///img/ApplicationInsights.png"
+					alt="Application Insights"
+				/>
+				Pat yourself in the back! It works, your serverless function app
+				is able to receive several sample readings thru HTTP. These
+				readings will give you the status of each oven at each pizzeria
+				factory oven.
+			</li>
+		</ol>
+		<p>
+			You are on your way to provide the reusable service that the
+			Pizzeria company needs.
+		</p>
+		<h2 id="summary">Summary</h2>
+		<p>
+			You did it! You played and tested a serverless function app. You
+			have learned how to create and host a Function app with business
+			logic in the cloud. A great way to add serverless hosted services to
+			your solution that can scale and grow.
+		</p>
+		<p>
+			Azure, in this case, manages the infrastructure and you focus on the
+			code. You can also integrate with other services, like
+			<em>GitHub</em>, <em>Twilio</em>, etc. to create complex Serverless
+			workflows quickly and easily. The Pizzeria Company can now determine
+			the best time to schedule maintenance for each of the pizzeria
+			factories.
+		</p>
+	</body>
+</html>
