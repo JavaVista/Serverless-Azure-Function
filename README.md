@@ -192,53 +192,35 @@ Now, let's add our own logic to the function to meet the requirements for the Pi
 * Now, we are going to add some data. under the __Body__ tab select the __raw__ radio button and select _JSON (application/json)_ from the dropdown.
   * Paste the following JSON snippet sample readings request into the request body text box:
 
-  ```javascript
-      {
-        "readings": [
-            {
-                "temperatureId": 1,
-                "timestamp": 1554391200,
-                "temperature": 203
-            },
-            {
-                "temperatureId": 3,
-                "timestamp": 1554391800,
-                "temperature": 400{
-                    "readings": [
-                        {
-                            "factory": 'Waterbury Pizza Pizza Factory',
-                            "temperatureId": 1,
-                            "timestamp": 1554391200,
-                            "temperature": 203
-                        },
-                        {
-                            "factory": 'Harford DiGeorgio Factory',
-                            "temperatureId": 3,
-                            "timestamp": 1554391800,
-                            "temperature": 400
-                        },
-                        {
-                            "factory": 'New York Migrante Factory',
-                            "temperatureId": 3,
-                            "timestamp": 1554390800,
-                            "temperature": 298
-                        },
-                        {
-                            "factory": 'Orlando Raton Pizza Factory',
-                            "temperatureId": 18,
-                            "timestamp": 1554392100,
-                            "temperature": 658
-                        }
-                    ]
-                }
-            },
-            {
-                "temperatureId": 18,
-                "timestamp": 1554392100,
-                "temperature": 658
-            }
-        ]
-    }
+  ```json
+    {
+    "readings": [
+        {
+            "factory": "Waterbury Pizza Pizza Factory",
+            "temperatureId": 1,
+            "timestamp": 1554391200,
+            "temperature": 203
+        },
+        {
+            "factory": "Harford DiGeorgio Factory",
+            "temperatureId": 3,
+            "timestamp": 1554391800,
+            "temperature": 400
+        },
+        {
+            "factory": "New York Migrante Factory",
+            "temperatureId": 3,
+            "timestamp": 1554390800,
+            "temperature": 298
+        },
+        {
+            "factory": "Orlando Raton Pizza Factory",
+            "temperatureId": 18,
+            "timestamp": 1554392100,
+            "temperature": 658
+        }
+    ]
+  }
 
   ```
 
