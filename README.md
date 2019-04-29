@@ -15,6 +15,10 @@
   - [Add your code to the function](#add-your-code-to-the-function)
   - [Let us test our own logic](#let-us-test-our-own-logic)
 - [Summary](#summary)
+- [Technology](#technology)
+- [Contributing](#contributing)
+- [Contact / Social Media](#contact--social-media)
+  - [License](#license)
 
 ## Scenario
 
@@ -255,3 +259,32 @@ Pat yourself in the back! It works, your serverless function app is able to rece
 You did it! You played and tested a serverless function app. You have learned how to create and host a Function app with business logic in the cloud. A great way to add serverless hosted services to your solution that can scale and grow.
 
 Azure, in this case, manages the infrastructure and you focus on the code. You can also integrate with other services, like _GitHub_, _Twilio_, etc. to create complex Serverless workflows quickly and easily. The Pizzeria Company can now determine the best time to schedule maintenance for each of the pizzeria factories.
+
+## Technology
+
+- HTML5
+- JavaScript
+- JSON
+- Markdown
+- Azure
+- Azure Functions (Serverless Computing)
+
+## Contributing
+
+This repository is part of my learning journey.
+
+For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
+## Contact / Social Media
+
+- Twitter – [@seetechnologic](https://twitter.com/seetechnologic)
+- GitHub - [https://github.com/JavaVista/](https://github.com/JavaVista/)
+- LinkedIn - [Javier Carrion](https://www.linkedin.com/in/technologic)
+
+### License
+
+Distributed under the MIT License. Note: Copyright and license text of third party modules are included in their source code.
+
+See the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
+for more information.
