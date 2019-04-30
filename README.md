@@ -1,19 +1,19 @@
 # Play and test your first Serverless Azure Function <!-- omit in toc -->
 
 - [Scenario](#scenario)
-- [What is serverless computing](#what-is-serverless-computing)
-  - [Here are some benefits of serverless computing](#here-are-some-benefits-of-serverless-computing)
-  - [What are Azure Functions](#what-are-azure-functions)
+- [What Is Serverless Computing](#what-is-serverless-computing)
+  - [Here Are Some Benefits of Serverless Computing](#here-are-some-benefits-of-serverless-computing)
+  - [What Are Azure Functions](#what-are-azure-functions)
 - [Ready to play](#ready-to-play)
-  - [Let us create a function app](#let-us-create-a-function-app)
+  - [Let Us Create a Function App](#let-us-create-a-function-app)
     - [Triggers](#triggers)
     - [Bindings](#bindings)
-    - [There are two kinds of binding](#there-are-two-kinds-of-binding)
-  - [Verify your function app was created](#verify-your-function-app-was-created)
-  - [Test your template function](#test-your-template-function)
-- [Requirements for your function](#requirements-for-your-function)
-  - [Add your code to the function](#add-your-code-to-the-function)
-  - [Let us test our own logic](#let-us-test-our-own-logic)
+    - [There Are Two Kinds of Binding](#there-are-two-kinds-of-binding)
+  - [Verify Your Function App Was Created](#verify-your-function-app-was-created)
+  - [Test Your Template Function](#test-your-template-function)
+- [Requirements for Your Function](#requirements-for-your-function)
+  - [Add Your Code to the Function](#add-your-code-to-the-function)
+  - [Let Us Test Our Own Logic](#let-us-test-our-own-logic)
 - [Summary](#summary)
 - [Technology](#technology)
 - [Contributing](#contributing)
@@ -28,11 +28,11 @@ Your company receives sensor data from several pizzeria factories and from diffe
 
 You decided the best and most cost-effective way to handle this task is to use serverless computing. For this project, you are going to use Azure Functions. With this in mind, we are going to play with Azure Functions to learn how it works immediately.
 
-## What is serverless computing
+## What Is Serverless Computing
 
 With serverless computing, your cloud provider manages the provisioning and maintenance of the infrastructure letting you focus on building the app logic. It enables you to run pieces of code or functions, written in the programming language of your choice, in the cloud. In other words, Function as a service (FaaS), or a microservice that is hosted on a cloud. Your function app is automatically scaled out or down depending on load.
 
-### Here are some benefits of serverless computing
+### Here Are Some Benefits of Serverless Computing
 
 * Write your own business logic in the language code of your choice
 * You do not need to manage any servers hardware or resources
@@ -42,7 +42,7 @@ With serverless computing, your cloud provider manages the provisioning and main
 * Functions are event-driven - they run only in response to a trigger or in other words to an event
 * The function app can be moved to a traditional compute environment - should the needs of your app change, you can move and deploy it in a non-serverless environment
 
-### What are Azure Functions
+### What Are Azure Functions
 
 Azure Functions is a serverless application platform provided by Microsoft. This allows developers to host business logic with the benefits of serverless computing. Azure Functions provides the scalability that it is needed and will charge only for the resources used. You can write your function app code in the language of your choice, like C#, F#, or JavaScript. It supports NuGet and NPM so you can use your favorite library in your business logic.
 
@@ -50,7 +50,7 @@ Azure Functions is a serverless application platform provided by Microsoft. This
 
 Note: Make sure you have an Azure account. If not click [here](https://azure.microsoft.com/en-us/free/search/?&OCID=AID719825_SEM_OaY3wowC&lnkd=Google_Azure_Brand&gclid=Cj0KCQjw2IrmBRCJARIsAJZDdxD4pB0RVipvBYT29z6cNUPJBKXXeaG7mu2_CT21WaZ1-O1V2S9kz14aAoEFEALw_wcB) to create a free one.
 
-### Let us create a function app
+### Let Us Create a Function App
 
 1. Sign into the __Azure portal__.
 2. Select the __Create a resource__ button found on the upper left-hand corner of the portal.
@@ -78,14 +78,14 @@ These are event objects that define how a function is invoked. You must configur
 
 These are the connection to data within your function. You do not have to write code in your function to connect to your data sources and to manage the connections because it takes care of the complexity for you. Each function can have none or more bindings to manage the input and output of data.
 
-#### There are two kinds of binding
+#### There Are Two Kinds of Binding
 
 * __Input binding__ - A connection to a data source. Your function can read data from these inputs.
 * __Output binding__ - A connection to a data destination. Your function can write data to these destinations.
 
 Azure provides a large list of [bindings](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings#supported-bindings) to connect to different storage and messaging services.
 
-### Verify your function app was created
+### Verify Your Function App Was Created
 
 1. Click the __Resource groups__ button on the left-hand menu of the portal.
 2. Click the resource group name link that matches the function app name that you previously created.
@@ -105,7 +105,7 @@ Azure provides a large list of [bindings](https://docs.microsoft.com/en-us/azure
 5. In the __New Function__ dialog box enter _OvenTemperatureService_ in the __Name__ field and leave the __Authorization level__ as _Function_.
 6. Click the __Create__ button. After a few seconds, the code editor will open an `index.js` file with the template code contents.
 
-### Test your template function
+### Test Your Template Function
 
 1. From the `index.js` code editor click the __</> Get function URL__ to get the endpoint.
 ![</> Get function URL](img/GetFunctionURL.png)
@@ -126,13 +126,13 @@ Azure provides a large list of [bindings](https://docs.microsoft.com/en-us/azure
 
 Now, let's add our own logic to the function to meet the requirements for the Pizzeria company.
 
-## Requirements for your function
+## Requirements for Your Function
 
 * A pizza cooking temperature between 0 to 300 degrees F should be flagged as COLD.
 * A pizza cooking temperature between 400 to 500 degrees F should be flagged as GREAT.
 * A pizza cooking temperature between 600 to 700 degrees F should be flagged as BURNT
 
-### Add your code to the function
+### Add Your Code to the Function
 
 1. Open the __Azure portal__.
 2. In the `index.js` file replace the template code with the following code:
@@ -180,7 +180,7 @@ Now, let's add our own logic to the function to meet the requirements for the Pi
 
     This is a simple logic that iterates over the array of readings and checks thru the fields and outputs the status of the oven, the date time and factory name.
 
-### Let us test our own logic
+### Let Us Test Our Own Logic
 
 1. Open the __Postman__ tool app.
 2. Create a new request with __Postman__:
