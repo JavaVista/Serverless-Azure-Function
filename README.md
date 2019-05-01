@@ -30,7 +30,7 @@ You decided the best and most cost-effective way to handle this task is to use s
 
 ## What Is Serverless Computing
 
-With serverless computing, your cloud provider manages the provisioning and maintenance of the infrastructure letting you focus on building the app logic. It enables you to run pieces of code or functions, written in the programming language of your choice, in the cloud. In other words, Function as a service (FaaS), or a microservice that is hosted on a cloud. Your function app is automatically scaled out or down depending on load.
+With serverless computing, your cloud provider manages the provisioning and maintenance of the infrastructure letting you focus on building the app logic. It enables you to run pieces of code or functions, written in the programming language of your choice, in the cloud. In other words, Function as a service (FaaS), or a microservice that is hosted on a cloud. Your function app is automatically scaled up or down depending on load.
 
 ### Here Are Some Benefits of Serverless Computing
 

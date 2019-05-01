@@ -89,7 +89,7 @@
     logic. It enables you to run pieces of code or functions, written in the
     programming language of your choice, in the cloud. In other words, Function
     as a service (FaaS), or a microservice that is hosted on a cloud. Your
-    function app is automatically scaled out or down depending on load.
+    function app is automatically scaled up or down depending on load.
 </p>
 <h3 id="here-are-some-benefits-of-serverless-computing">
     Here are some benefits of serverless computing
@@ -321,13 +321,13 @@
         testing web services.
     </li>
     <li>
-        <p>Create a new request with <strong>Postman</strong>:</p>
+        Create a new request with <strong>Postman</strong>:
     </li>
     <li>
-        <p>
+
             Use a <strong>POST</strong> request and paste the <em>URL</em> from
             your <strong>Get function URL</strong> dialog you copied.
-        </p>
+
     </li>
     <li>
         Under the <strong>Params</strong> tab add the following key-value pair:
@@ -349,11 +349,11 @@
         </ul>
     </li>
     <li>
-        <p>
+
             Click the <strong>Send</strong> button and
             <strong>Postman</strong> will get the response back with the text
             <code>Hello Azure Function</code>.
-        </p>
+
         <p>
             Yay! It works, you are able to communicate with the function app
             thru HTTP.
@@ -383,10 +383,10 @@
 <ol>
     <li>Open the <strong>Azure portal</strong>.</li>
     <li>
-        <p>
+
             In the <code>index.js</code> file replace the template code with the
             following code:
-        </p>
+
         <pre><code class="lang-javascript"> module.exports = <span class="hljs-keyword">function</span>(context, req) {
      context.log(<span class="hljs-symbol">'OvenTemperature</span> Service triggered');
      <span class="hljs-keyword">if</span> (req.<span class="hljs-keyword">body</span> &amp;&amp; req.<span class="hljs-keyword">body</span>.readings) {
@@ -426,10 +426,10 @@
 </code></pre>
     </li>
     <li>
-        <p>
+
             Click the <strong>Save</strong> button at the top of the code
             editor.
-        </p>
+
         <p>
             This is a simple logic that iterates over the array of readings and
             checks thru the fields and outputs the status of the oven, the date
@@ -441,13 +441,13 @@
 <ol>
     <li>Open the <strong>Postman</strong> tool app.</li>
     <li>
-        <p>Create a new request with <strong>Postman</strong>:</p>
+        Create a new request with <strong>Postman</strong>:
     </li>
     <li>
-        <p>
+
             Use a <strong>POST</strong> request and paste the <em>URL</em> from
             your <strong>Get function URL</strong> dialog you copied before.
-        </p>
+
     </li>
     <li>
         Under the <strong>Headers</strong> tab add the following key-value pair:
@@ -468,12 +468,12 @@
         >. This means we need some data.
     </li>
     <li>
-        <p>
+
             Now, we are going to add some data. under the
             <strong>Body</strong> tab select the <strong>raw</strong> radio
             button and select <em>JSON (application/json)</em> from the
             dropdown.
-        </p>
+
         <ul>
             <li>
                 Paste the following JSON snippet sample readings request into
@@ -512,16 +512,16 @@
 </code></pre>
     </li>
     <li>
-        <p>
+
             Click the <strong>Send</strong> button and
             <strong>Postman</strong> will get the response back of the JSON.
-        </p>
+
     </li>
     <li>
-        <p>
+
             Go back to the <strong>Azure portal</strong> and the
             <code>index.js</code> code editor.
-        </p>
+
     </li>
     <li>
         Open the <strong>Logs</strong> tab in the bottom flyout of the page. The
@@ -532,14 +532,14 @@
         the readings along with the date time and factory name.
     </li>
     <li>
-        <p>
+
             If you navigate to the Monitor dashboard, you&#39;ll see that the
             request has been logged to <strong>Application Insights</strong>.</br>
             <img src="img/ApplicationInsights.png" alt="Application Insights" style="height: 224px; width: 600px" /></br>
             Pat yourself in the back! It works, your serverless function app is
             able to receive several sample readings thru HTTP. These readings
             will give you the status of each oven at each pizzeria factory oven.
-        </p>
+       
         <p>
             You are on your way to provide the reusable service that the
             Pizzeria company needs.

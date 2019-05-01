@@ -146,7 +146,7 @@
 			functions, written in the programming language of your choice, in
 			the cloud. In other words, Function as a service (FaaS), or a
 			microservice that is hosted on a cloud. Your function app is
-			automatically scaled out or down depending on load.
+			automatically scaled up or down depending on load.
 		</p>
 		<h3 id="here-are-some-benefits-of-serverless-computing">
 			Here are some benefits of serverless computing
@@ -407,17 +407,17 @@
 		</ol>
 		<ul>
 			<li>
-				<p>
+
 					Use a <strong>POST</strong> request and paste the
 					<em>URL</em> from your
 					<strong>Get function URL</strong> dialog you copied.
-				</p>
+
 			</li>
 			<li>
-				<p>
+
 					Under the <strong>Params</strong> tab add the following
 					key-value pair:
-				</p>
+
 				<ul>
 					<li>
 						For the <strong>Key</strong> enter <code>name</code> and
@@ -427,10 +427,10 @@
 				</ul>
 			</li>
 			<li>
-				<p>
+
 					Under the <strong>Headers</strong> tab add the following
 					key-value pair:
-				</p>
+
 				<ul>
 					<li>
 						for the <strong>Key</strong> enter
@@ -441,11 +441,11 @@
 				</ul>
 			</li>
 			<li>
-				<p>
+
 					Click the <strong>Send</strong> button and
 					<strong>Postman</strong> will get the response back with the
 					text <code>Hello Azure Function</code>.
-				</p>
+
 				<p>
 					Yay! It works, you are able to communicate with the function
 					app thru HTTP.
@@ -478,13 +478,13 @@
 		</h3>
 		<ol>
 			<li>
-				<p>Open the <strong>Azure portal</strong>.</p>
+				Open the <strong>Azure portal</strong>.
 			</li>
 			<li>
-				<p>
+
 					In the <code>index.js</code> file replace the template code
 					with the following code:
-				</p>
+
 				<pre><code class="language-javascript"><div> <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">context, req</span>) </span>{
      context.log(<span class="hljs-string">'OvenTemperature Service triggered'</span>);
      <span class="hljs-keyword">if</span> (req.body &amp;&amp; req.body.readings) {
@@ -524,10 +524,10 @@
 </div></code></pre>
 			</li>
 			<li>
-				<p>
+
 					Click the <strong>Save</strong> button at the top of the
 					code editor.
-				</p>
+
 				<p>
 					This is a simple logic that iterates over the array of
 					readings and checks thru the fields and outputs the status
@@ -542,17 +542,17 @@
 		</ol>
 		<ul>
 			<li>
-				<p>
+
 					Use a <strong>POST</strong> request and paste the
 					<em>URL</em> from your
 					<strong>Get function URL</strong> dialog you copied before.
-				</p>
+
 			</li>
 			<li>
-				<p>
+
 					Under the <strong>Headers</strong> tab add the following
 					key-value pair:
-				</p>
+
 				<ul>
 					<li>
 						Under the <strong>Key</strong> enter
@@ -563,7 +563,7 @@
 				</ul>
 			</li>
 			<li>
-				<p>
+
 					Click the <strong>Send</strong> button and
 					<strong>Postman</strong> will get the response back with the
 					text
@@ -571,15 +571,15 @@
 						>Please send an array of temperature readings in the
 						request body</code
 					>. This means we need some data.
-				</p>
+
 			</li>
 			<li>
-				<p>
+
 					Now, we are going to add some data. under the
 					<strong>Body</strong> tab select the
 					<strong>raw</strong> radio button and select
 					<em>JSON (application/json)</em> from the dropdown.
-				</p>
+
 				<ul>
 					<li>
 						Paste the following JSON snippet sample readings request
@@ -619,11 +619,11 @@
 </div></code></pre>
 			</li>
 			<li>
-				<p>
+
 					Click the <strong>Send</strong> button and
 					<strong>Postman</strong> will get the response back of the
 					JSON.
-				</p>
+				
 			</li>
 		</ul>
 		<ol start="3">
