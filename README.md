@@ -1,4 +1,4 @@
-# Play and test your first Serverless Azure Function <!-- omit in toc -->
+# Play and Test Your First Serverless Azure Function <!-- omit in toc -->
 
 - [Scenario](#scenario)
 - [What Is Serverless Computing](#what-is-serverless-computing)
